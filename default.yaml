@@ -5,9 +5,11 @@ user_paths:
     steps:
     - request:
         url: https://postman-echo.com/get?foo1=bar1&foo2=bar2
-    - think_time: 1s
+        sla_profile: Response times
+    - think_time: 10s
     - transaction:
         name: 01 - Postman GET
+        sla_profile: Response times
         steps:
         - request:
             server: postman-echo
@@ -22,10 +24,18 @@ scenarios:
   populations:
   - name: Getters
     constant_load:
-      users: 5
+      users: 2
       duration: 2m
       rampup: 15s
 servers:
 - name: postman-echo
   host: postman-echo.com
   scheme: https
+sla_profiles:
+- name: Response times
+  thresholds:
+  - avg-resp-time warn >= 500ms fail >= 1s per interval
+  - avg-resp-time warn >= 500ms fail >= 1s per interval
+  - perc-transaction-resp-time (p93) warn >= 1s fail >= 2s per interval
+  - error-rate warn >= 2% fail >= 5% per test
+  - error-rate warn >= 5% per interval

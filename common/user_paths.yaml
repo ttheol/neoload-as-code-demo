@@ -1,0 +1,16 @@
+user_paths:
+- name: Postman Get
+  actions:
+    steps:
+    - request:
+        sla_profile: Response times
+        url: https://postman-echo.com/get?foo1=bar1&foo2=bar2
+    - think_time: 10s
+    - transaction:
+        sla_profile: Response times
+        name: 01 - Postman GET
+        steps:
+        - request:
+            server: postman-echo
+            url: /get?foo1=bar1&foo2=bar2
+            sla_profile: Response times

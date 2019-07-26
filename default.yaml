@@ -1,0 +1,31 @@
+name: postman-echo
+includes:
+  - v1/servers.yaml
+#  - common/populations.yaml
+#  - common/scenarios.yaml
+#  - common/user_paths.yaml
+user_paths:
+- name: Postman Get
+  actions:
+    steps:
+    - request:
+        url: https://postman-echo.com/get?foo1=bar1&foo2=bar2
+    - think_time: 1s
+    - transaction:
+        name: 01 - Postman GET
+        steps:
+        - request:
+            server: postman-echo
+            url: /get?foo1=bar1&foo2=bar2
+populations:
+- name: Getters
+  user_paths:
+  - name: Postman Get
+    distribution: 100%
+scenarios:
+- name: Get
+  populations:
+  - name: Getters
+    constant_load:
+      users: 1
+      duration: 2m

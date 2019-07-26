@@ -1,9 +1,4 @@
 name: postman-echo
-#includes:
-#  - v1/servers.yaml
-#  - common/populations.yaml
-#  - common/scenarios.yaml
-#  - common/user_paths.yaml
 user_paths:
 - name: Postman Get
   actions:
@@ -27,8 +22,9 @@ scenarios:
   populations:
   - name: Getters
     constant_load:
-      users: 1
+      users: 5
       duration: 2m
+      rampup: 15s
 servers:
 - name: postman-echo
   host: postman-echo.com

@@ -1,6 +1,6 @@
 scenarios:
 - name: Get
-  sla_profile: global-error-rates
+  sla_profile: scenario-slas
   populations:
   - name: Getters
     constant_load:

@@ -3,6 +3,7 @@ sla_profiles:
 - name: Response times
   thresholds:
   - avg-resp-time warn >= 200ms fail >= 500ms per interval
+  - avg-transaction-resp-time warn >= 200ms fail >= 500ms per test
   - perc-transaction-resp-time (p90) warn >= 1s fail >= 2s per test
   - error-rate warn >= 2% fail >= 5% per test
   - error-rate warn >= 5% per interval
@@ -21,6 +22,7 @@ user_paths:
         - request:
             server: postman-echo
             url: /get?foo1=bar1&foo2=bar2
+            sla_profile: Response times
 populations:
 - name: Getters
   user_paths:

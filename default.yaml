@@ -1,12 +1,6 @@
 name: postman_echo
-sla_profiles:
-- name: Response times
-  thresholds:
-  - avg-resp-time warn >= 200ms fail >= 500ms per interval
-  - avg-transaction-resp-time warn >= 200ms fail >= 500ms per test
-  - perc-transaction-resp-time (p90) warn >= 1s fail >= 2s per test
-  - error-rate warn >= 2% fail >= 5% per test
-  - error-rate warn >= 5% per interval
+includes:
+  - common/slas.yaml
 user_paths:
 - name: Postman Get
   actions:

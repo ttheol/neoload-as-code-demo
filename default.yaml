@@ -9,6 +9,7 @@ populations:
     distribution: 100%
 scenarios:
 - name: Get
+  sla_profile: Response times
   populations:
   - name: Getters
     constant_load:

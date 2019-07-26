@@ -1,4 +1,4 @@
-name: postman-echo
+name: postman_echo
 sla_profiles:
 - name: Response times
   thresholds:

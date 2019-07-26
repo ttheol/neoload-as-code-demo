@@ -1,0 +1,4 @@
+servers:
+- name: postman-echo
+  host: postman-echo.com
+  scheme: https

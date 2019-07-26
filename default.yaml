@@ -2,21 +2,6 @@ name: postman_echo
 includes:
   - common/slas.yaml
   - common/user_paths.yaml
-populations:
-- name: Getters
-  user_paths:
-  - name: Postman Get
-    distribution: 100%
-scenarios:
-- name: Get
-  sla_profile: Response times
-  populations:
-  - name: Getters
-    constant_load:
-      users: 2
-      duration: 2m
-      rampup: 15s
-servers:
-- name: postman-echo
-  host: postman-echo.com
-  scheme: https
+  - common/populations.yaml
+  - common/scenarios.yaml
+  - v1/servers.yaml

@@ -1,0 +1,5 @@
+populations:
+- name: Getters
+  user_paths:
+  - name: Postman Get
+    distribution: 100%

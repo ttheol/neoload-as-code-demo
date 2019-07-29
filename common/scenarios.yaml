@@ -4,11 +4,11 @@ scenarios:
   populations:
   - name: getters
     constant_load:
-      users: 2
+      users: 3
       duration: 2m
       rampup: 15s
   - name: petstore
     constant_load:
-      users: 2
+      users: 3
       duration: 2m
       rampup: 15s

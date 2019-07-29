@@ -16,16 +16,16 @@ user_paths:
             sla_profile: response-times
 - name: Petstore Inventory
   actions:
-  steps:
-  - transaction:
-      sla_profile: response-times
-      name: 02 - Petstore Inventory
-      steps:
-      - request:
-          server: petstore
-          url: /v2/store/inventory
-          method: GET
-          header:
-            - Content-Type: application/json
-          sla_profile: response-times
-      - think_time: 10s
+    steps:
+    - transaction:
+        sla_profile: response-times
+        name: 02 - Petstore Inventory
+        steps:
+        - request:
+            server: petstore
+            url: /v2/store/inventory
+            method: GET
+            headers:
+              - Content-Type: application/json
+            sla_profile: response-times
+    - think_time: 10s

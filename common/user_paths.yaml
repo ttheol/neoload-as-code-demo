@@ -29,3 +29,53 @@ user_paths:
               - Content-Type: application/json
             sla_profile: response-times
     - think_time: 10s
+- name: Add Pet then Delete it
+  actions:
+    steps:
+    - transaction:
+        sla_profile: response-times
+        name: 03 - Add New Pet
+        steps:
+        - request:
+            server: petstore
+            url: /v2/pet
+            method: POST
+            headers:
+              - Content-Type: application/json
+              - accept: application/json
+            sla_profile: response-times
+            body: |
+              {
+                "id": ${newPetId},
+                "category": {
+                  "id": 0,
+                  "name": "string"
+                },
+                "name": "doggie",
+                "photoUrls": [
+                  "string"
+                ],
+                "tags": [
+                  {
+                    "id": 0,
+                    "name": "string"
+                  }
+                ],
+                "status": "available"
+              }
+            extractors:
+            - name: petId
+              jsonpath: $..id
+    - transaction:
+        sla_profile: response-times
+        name: 04 - Delete Pet
+        steps:
+        - request:
+            server: petstore
+            url: /v2/pet/${petId}
+            method: DELETE
+            headers:
+              - Content-Type: application/json
+              - accept: application/json
+            sla_profile: response-times
+    - think_time: 10s

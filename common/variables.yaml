@@ -1,0 +1,6 @@
+variables:
+- random_number:
+    name: newPetId
+    min: 1000
+    max: 9999
+    change_policy: each_iteration

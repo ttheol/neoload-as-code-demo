@@ -2,7 +2,12 @@ scenarios:
 - name: Get
   sla_profile: scenario-slas
   populations:
-  - name: Getters
+  - name: getters
+    constant_load:
+      users: 2
+      duration: 2m
+      rampup: 15s
+  - name: petstore
     constant_load:
       users: 2
       duration: 2m

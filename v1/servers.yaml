@@ -2,3 +2,6 @@ servers:
 - name: postman-echo
   host: postman-echo.com
   scheme: https
+- name: petstore
+  host: petstore.swagger.io
+  scheme: https

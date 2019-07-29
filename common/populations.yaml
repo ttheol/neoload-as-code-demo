@@ -1,5 +1,9 @@
 populations:
-- name: Getters
+- name: getters
   user_paths:
   - name: Postman Get
+    distribution: 100%
+- name: petstore
+  user_paths:
+  - name: Petstore Inventory
     distribution: 100%

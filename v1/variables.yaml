@@ -1,0 +1,22 @@
+variables:
+- random_number:
+    name: newPetId
+    min: 1000
+    max: 9999
+    change_policy: each_iteration
+- constant:
+    name: oauth_redirecturi
+    value: http://petstore.swagger.io/oauth2-redirect.html
+- constant:
+    name: oauth_client
+    value: test
+- constant:
+    name: oauth_scope
+    value: write:pets read:pets
+- constant:
+    name: oauth_state
+    value: TW9uIEp1bCAyOSAyMDE5IDExOjM2OjI2IEdNVCswMjAwIChDRVNUKQ==
+- file:
+    name: users
+    is_first_line_column_names: true
+    path: v1/data/users.csv

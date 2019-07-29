@@ -4,5 +4,5 @@ includes:
   - common/user_paths.yaml
   - common/populations.yaml
   - common/scenarios.yaml
-  - common/variables.yaml
+  - v1/variables.yaml
   - v1/servers.yaml

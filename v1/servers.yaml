@@ -5,3 +5,6 @@ servers:
 - name: petstore
   host: petstore.swagger.io
   scheme: https
+- name: petstore-http
+  host: petstore.swagger.io
+  scheme: http

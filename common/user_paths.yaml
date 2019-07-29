@@ -30,6 +30,48 @@ user_paths:
             sla_profile: response-times
     - think_time: 10s
 - name: Add Pet then Delete it
+  init:
+    steps:
+    - transaction:
+        name: 00b - Login
+        sla_profile: response-times
+        steps:
+        - request:
+            server: petstore-http
+            method: POST
+            url: /oauth/login
+            headers:
+              - Content-Type: application/x-www-form-urlencoded
+              - Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+            body: |
+              username=${users.username}&password=${users.password}&login=
+    - transaction:
+        name: 00a - Get Login Page
+        sla_profile: response-times
+        steps:
+        - request:
+            server: petstore
+            method: GET
+            url: /oauth/authorize?response_type=token&client_id=${oauth_client}&redirect_uri=__encodeURL(${oauth_redirecturi})&scope=__encodeURL(${oauth_scope})&state=__encodeURL(${oauth_state})
+            headers:
+              - Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+    - transaction:
+        name: 00c - Get OAuth Token
+        sla_profile: response-times
+        steps:
+        - request:
+            server: petstore
+            method: POST
+            url: /oauth/authorize
+            headers:
+              - Content-Type: application/x-www-form-urlencoded
+              - Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+            body: |
+              user_oauth_approval=true&scope.read%3Apets=true&scope.write%3Apets=true&authorize=Authorize
+            extractors:
+            - name: oauth_token
+              from: header
+              regexp: access_token=(.*?)&
   actions:
     steps:
     - transaction:
@@ -43,6 +85,7 @@ user_paths:
             headers:
               - Content-Type: application/json
               - accept: application/json
+              - Authorization: Bearer ${oauth_token}
             sla_profile: response-times
             body: |
               {
@@ -77,5 +120,6 @@ user_paths:
             headers:
               - Content-Type: application/json
               - accept: application/json
+              - Authorization: Bearer ${oauth_token}
             sla_profile: response-times
     - think_time: 10s

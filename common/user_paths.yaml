@@ -13,4 +13,4 @@ user_paths:
         - request:
             server: postman-echo
             url: /get?foo1=bar1&foo2=bar2
-            sla_profile: Response times
+            sla_profile: response-times

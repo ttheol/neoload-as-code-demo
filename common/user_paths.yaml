@@ -33,8 +33,7 @@ user_paths:
   init:
     steps:
     - transaction:
-        name: 00b - Login
-        sla_profile: response-times
+        name: 00a - Login
         steps:
         - request:
             server: petstore-http
@@ -46,8 +45,7 @@ user_paths:
             body: |
               username=${users.username}&password=${users.password}&login=
     - transaction:
-        name: 00a - Get Login Page
-        sla_profile: response-times
+        name: 00b - Get Token Page
         steps:
         - request:
             server: petstore
@@ -57,7 +55,6 @@ user_paths:
               - Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
     - transaction:
         name: 00c - Get OAuth Token
-        sla_profile: response-times
         steps:
         - request:
             server: petstore

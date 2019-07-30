@@ -1,4 +1,4 @@
-name: postman_echo
+name: api_as_code_demo
 includes:
   - common/slas.yaml
   - common/user_paths.yaml

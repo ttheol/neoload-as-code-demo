@@ -119,4 +119,4 @@ user_paths:
               - accept: application/json
               - Authorization: Bearer ${oauth_token}
             sla_profile: response-times
-    - think_time: 10s
+    - think_time: 8s

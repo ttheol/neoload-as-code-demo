@@ -14,6 +14,6 @@ populations:
   - name: Add Pet then Delete it
     distribution: 100%
 - name: petstore inventory
-user_paths:
+  user_paths:
   - name: Petstore Inventory
     distribution: 100%

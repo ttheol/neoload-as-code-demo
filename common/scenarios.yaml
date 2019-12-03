@@ -15,3 +15,15 @@ scenarios:
       users: 5
       duration: 2m
       rampup: 15s
+- name: Unit tests
+  sla_profile: scenario-slas
+  populations:
+  - name: add pet then delete it
+    constant_load:
+      users: 1
+      duration: 10 iterations
+  - name: petstore inventory
+    constant_load:
+      users: 1
+      duration: 10 iterations
+      start_after: add pet then delete it

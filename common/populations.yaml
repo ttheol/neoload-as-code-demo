@@ -9,3 +9,11 @@ populations:
     distribution: 50%
   - name: Add Pet then Delete it
     distribution: 50%
+- name: add pet then delete
+  user_paths:
+  - name: Add Pet then Delete it
+    distribution: 100%
+- name: petstore inventory
+user_paths:
+  - name: Petstore Inventory
+    distribution: 100%

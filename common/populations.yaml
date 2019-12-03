@@ -9,7 +9,7 @@ populations:
     distribution: 50%
   - name: Add Pet then Delete it
     distribution: 50%
-- name: add pet then delete
+- name: add pet then delete it
   user_paths:
   - name: Add Pet then Delete it
     distribution: 100%
